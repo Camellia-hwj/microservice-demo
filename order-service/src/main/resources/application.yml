@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/product_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    openfeign:               # ✅ 正确：与 nacos 平级
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
